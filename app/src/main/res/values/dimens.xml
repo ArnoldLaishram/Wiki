@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tmp_size">96sp</dimen>
+    <dimen name="city_txt_size">36sp</dimen>
+    <dimen name="error_txt_size">54sp</dimen>
+    <dimen name="txt_forcast_size">16sp</dimen>
+    <dimen name="txt_forcast_temp_size">16sp</dimen>
+    <dimen name="text_medium">16dp</dimen>
+</resources>

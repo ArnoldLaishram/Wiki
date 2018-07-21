@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Wiki</string>
+    <string name="bangalore">Bangalore</string>
+    <string name="error_txt">Something went wrong at our end!</string>
+    <string name="retry">Retry</string>
+    <string name="txt_forcast_day">Monday</string>
+    <string name="txt_forcast_day_temp">20º</string>
+    <string name="search_hint">Search Wikipedia</string>
+    <string name="recent_search_title">Recent searches:</string>
+</resources>
