@@ -1,6 +1,5 @@
 package com.moneytap.assignment.di.module;
 
-import com.moneytap.assignment.WikiService;
 import com.moneytap.assignment.ui.HomeActivity;
 import com.moneytap.assignment.ui.HomeActivityContract;
 import com.moneytap.assignment.ui.HomeActivityPresenter;

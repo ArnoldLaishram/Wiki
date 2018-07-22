@@ -6,4 +6,6 @@
     <dimen name="txt_forcast_size">16sp</dimen>
     <dimen name="txt_forcast_temp_size">16sp</dimen>
     <dimen name="text_medium">16dp</dimen>
+    <dimen name="title_size">24sp</dimen>
+    <dimen name="desc_size">16sp</dimen>
 </resources>

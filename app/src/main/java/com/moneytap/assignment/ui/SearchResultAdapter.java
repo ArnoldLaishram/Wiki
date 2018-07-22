@@ -10,15 +10,12 @@ import android.widget.TextView;
 
 import com.moneytap.assignment.R;
 import com.moneytap.assignment.model.Page;
-import com.moneytap.assignment.model.Query;
 import com.squareup.picasso.Picasso;
 
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Retrofit;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder> {
 
@@ -44,8 +41,8 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         if (page.getThumbnail() != null)
             Picasso.get().load(page.getThumbnail().getSource()).into(holder.pageIcon);
         holder.txtTitle.setText(page.getTitle());
-        if (page.getTerms() != null && page.getTerms().getDescription() != null && page.getTerms().getDescription().size() > 0) {
-            holder.txtDesc.setText(page.getTerms().getDescription().get(0));
+        if (page.getDesc() != null) {
+            holder.txtDesc.setText(page.getDesc());
         } else {
             holder.txtDesc.setText("");
         }

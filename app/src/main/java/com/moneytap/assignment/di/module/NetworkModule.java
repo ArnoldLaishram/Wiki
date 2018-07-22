@@ -1,10 +1,10 @@
 package com.moneytap.assignment.di.module;
 
-import com.moneytap.assignment.Config;
-import com.moneytap.assignment.WikiService;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.moneytap.assignment.Config;
+import com.moneytap.assignment.WikiService;
 
 import java.io.IOException;
 import java.util.ArrayList;

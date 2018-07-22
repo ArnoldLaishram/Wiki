@@ -1,6 +1,5 @@
 package com.moneytap.assignment.di.module;
 
-import com.moneytap.assignment.WikiService;
 import com.moneytap.assignment.ui.pagedetail.PageDetailActivity;
 import com.moneytap.assignment.ui.pagedetail.PageDetailContract;
 import com.moneytap.assignment.ui.pagedetail.PageDetailPresenter;

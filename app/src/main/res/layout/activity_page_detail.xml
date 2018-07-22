@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey">
+
+        <ImageView
+            android:id="@+id/page_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <FrameLayout
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_back" />
+
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/search_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-6.5dp"
+            android:indeterminate="true"
+            android:indeterminateTint="?attr/colorPrimary"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/txt_page_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="@dimen/title_size" />
+
+    <TextView
+        android:id="@+id/txt_page_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="@dimen/desc_size" />
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp" />
+
+</LinearLayout>

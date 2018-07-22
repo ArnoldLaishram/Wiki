@@ -1,23 +1,21 @@
 package com.moneytap.assignment.util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.app.Activity;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class Util {
 
-    public static String getDayofWeekFromDate(String dateString) {
-        try {
-            // Get Date from String
-            Date d = new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
+    public static void hideKeyboard(Activity activity, View view) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
 
-            // get Day of the week from Date
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE");
-            return simpleDateFormat.format(d);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
         }
 
-        return null;
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

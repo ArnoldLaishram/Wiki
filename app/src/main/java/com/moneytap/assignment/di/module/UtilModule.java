@@ -2,8 +2,8 @@ package com.moneytap.assignment.di.module;
 
 import android.content.Context;
 
-import com.moneytap.assignment.util.PreferenceUtil;
 import com.google.gson.Gson;
+import com.moneytap.assignment.util.PreferenceUtil;
 
 import dagger.Module;
 import dagger.Provides;

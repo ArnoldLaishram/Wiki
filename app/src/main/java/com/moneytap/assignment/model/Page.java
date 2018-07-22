@@ -3,6 +3,9 @@ package com.moneytap.assignment.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Page {
 
     @SerializedName("pageid")
@@ -14,15 +17,14 @@ public class Page {
     @SerializedName("title")
     @Expose
     private String title;
+    @SerializedName("description")
+    private String desc;
     @SerializedName("index")
     @Expose
     private Integer index;
     @SerializedName("thumbnail")
     @Expose
     private Thumbnail thumbnail;
-    @SerializedName("terms")
-    @Expose
-    private Terms terms;
 
     /**
      * No args constructor for use in serialization
@@ -35,17 +37,23 @@ public class Page {
      * @param title
      * @param ns
      * @param thumbnail
-     * @param terms
      * @param pageid
      */
-    public Page(Integer pageid, Integer ns, String title, Integer index, Thumbnail thumbnail, Terms terms) {
+    public Page(Integer pageid, Integer ns, String title, Integer index, Thumbnail thumbnail) {
         super();
         this.pageid = pageid;
         this.ns = ns;
         this.title = title;
         this.index = index;
         this.thumbnail = thumbnail;
-        this.terms = terms;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public Integer getPageid() {
@@ -86,14 +94,6 @@ public class Page {
 
     public void setThumbnail(Thumbnail thumbnail) {
         this.thumbnail = thumbnail;
-    }
-
-    public Terms getTerms() {
-        return terms;
-    }
-
-    public void setTerms(Terms terms) {
-        this.terms = terms;
     }
 
 }

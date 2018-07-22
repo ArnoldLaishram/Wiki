@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.moneytap.assignment.R;
-import com.moneytap.assignment.model.Page;
 
 import java.util.List;
 

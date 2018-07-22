@@ -31,7 +31,7 @@ public class HomeActivityPresenter implements HomeActivityContract.Presenter {
     @Override
     public void searchQuery(String query) {
         this.viewInterator.showProgress(true);
-        searchQueryCall = this.wikiService.searchQuery(query);
+        searchQueryCall = this.wikiService.searchQuery(query, query);
         searchQueryCall.enqueue(new Callback<SearchQueryResponse>() {
             @Override
             public void onResponse(Call<SearchQueryResponse> call, Response<SearchQueryResponse> response) {

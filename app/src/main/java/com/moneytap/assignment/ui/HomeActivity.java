@@ -1,9 +1,9 @@
 package com.moneytap.assignment.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -21,7 +21,9 @@ import android.widget.ProgressBar;
 
 import com.moneytap.assignment.R;
 import com.moneytap.assignment.model.Page;
+import com.moneytap.assignment.ui.pagedetail.PageDetailActivity;
 import com.moneytap.assignment.util.PreferenceUtil;
+import com.moneytap.assignment.util.Util;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -111,6 +113,9 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
 
     private void animateToHomeView() {
         isInSearchView = false;
+        // hideKeyBoard before saving details
+//        Util.hideKeyboard(this, edtSearch);
+        edtSearch.clearFocus();
         saveRecentSearches();
         TransitionSet transitionSet = new TransitionSet()
                 .addTransition(new Fade()
@@ -128,7 +133,6 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
     }
 
     private void saveRecentSearches() {
-        edtSearch.clearFocus();
         String searchString = edtSearch.getText().toString();
         if (searchString.isEmpty()) return;
         HashSet<String> set = (HashSet<String>) preferenceUtil.read(PreferenceUtil.SEARCH_HISTORY, HashSet.class);
@@ -174,6 +178,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
         // Setup the toolBar
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
         // init search layout views
         searchLayout = (FrameLayout) getLayoutInflater().inflate(R.layout.search_layout, null);
@@ -193,11 +198,9 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
         List<Page> searchResults = new ArrayList<Page>();
         searchResultAdapter = new SearchResultAdapter(searchResults, this);
         searchResultRv.setAdapter(searchResultAdapter);
-//        searchResultRv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         searchHistoryAdapter = new SearchHistoryAdapter(new ArrayList<String>(), this);
         searchHistoryRv.setAdapter(searchHistoryAdapter);
-//        searchHistoryRv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 
     private void hideSearchHistoryView() {
@@ -238,7 +241,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
 
     @Override
     public void onSearchItemClicked(Page page) {
-
+        startActivity(PageDetailActivity.newIntent(HomeActivity.this, page));
     }
 
     @Override

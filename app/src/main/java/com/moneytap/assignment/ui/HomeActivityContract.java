@@ -2,7 +2,6 @@ package com.moneytap.assignment.ui;
 
 
 import com.moneytap.assignment.model.Page;
-import com.moneytap.assignment.model.Query;
 
 import java.util.List;
 
@@ -10,7 +9,9 @@ public interface HomeActivityContract {
 
     interface View {
         void showProgress(boolean showProgress);
+
         void onSearchQuerySuccess(List<Page> page);
+
         void onSearchQueryFailed();
     }
 
