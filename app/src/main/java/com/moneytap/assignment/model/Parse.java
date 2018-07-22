@@ -1,6 +1,5 @@
 package com.moneytap.assignment.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Parse {
@@ -20,14 +19,6 @@ public class Parse {
         this.title = title;
     }
 
-    public String getPage() {
-        return page;
-    }
-
-    public void setPage(String page) {
-        this.page = page;
-    }
-
     public String getText() {
         return text.getDescHtml();
     }
@@ -44,8 +35,5 @@ public class Parse {
             return descHtml;
         }
 
-        public void setDescHtml(String descHtml) {
-            this.descHtml = descHtml;
-        }
     }
 }

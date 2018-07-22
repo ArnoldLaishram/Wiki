@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#000000</color>
+    <color name="progressBarColor">#4aa7ef</color>
 
     <color name="base30">#72777d</color>
     <color name="base20">#54595d</color>

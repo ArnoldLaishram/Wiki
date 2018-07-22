@@ -2,7 +2,6 @@ package com.moneytap.assignment.ui.pagedetail;
 
 import com.moneytap.assignment.WikiService;
 import com.moneytap.assignment.model.PageResponse;
-import com.moneytap.assignment.model.SearchQueryResponse;
 
 import javax.inject.Inject;
 

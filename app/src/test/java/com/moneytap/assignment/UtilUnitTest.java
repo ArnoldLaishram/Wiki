@@ -1,7 +1,5 @@
 package com.moneytap.assignment;
 
-import com.moneytap.assignment.util.Util;
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;

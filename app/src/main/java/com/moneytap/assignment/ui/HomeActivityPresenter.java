@@ -37,7 +37,7 @@ public class HomeActivityPresenter implements HomeActivityContract.Presenter {
             public void onResponse(Call<SearchQueryResponse> call, Response<SearchQueryResponse> response) {
                 viewInterator.showProgress(false);
                 if (response.code() >= 200 && response.code() <= 300) {
-                    if (response.body().getQuery() != null)
+                    if (response.body() != null && response.body().getQuery() != null)
                         viewInterator.onSearchQuerySuccess(response.body().getQuery().getPages());
                     return;
                 }

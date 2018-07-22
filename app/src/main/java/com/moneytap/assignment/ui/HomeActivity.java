@@ -1,7 +1,6 @@
 package com.moneytap.assignment.ui;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,11 +18,10 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import com.moneytap.assignment.Preference;
 import com.moneytap.assignment.R;
 import com.moneytap.assignment.model.Page;
 import com.moneytap.assignment.ui.pagedetail.PageDetailActivity;
-import com.moneytap.assignment.util.PreferenceUtil;
-import com.moneytap.assignment.util.Util;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -48,8 +46,6 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
     private CardView searchCard;
     private FrameLayout searchLayout;
     private View alphaView;
-    private RecyclerView searchHistoryRv;
-    private RecyclerView searchResultRv;
     private View searchHistoryView;
     private EditText edtSearch;
     private ProgressBar progressBar;
@@ -62,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
     @Inject
     HomeActivityPresenter homeActivityPresenter;
     @Inject
-    PreferenceUtil preferenceUtil;
+    Preference preference;
 
 
     @Override
@@ -113,8 +109,6 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
 
     private void animateToHomeView() {
         isInSearchView = false;
-        // hideKeyBoard before saving details
-//        Util.hideKeyboard(this, edtSearch);
         edtSearch.clearFocus();
         saveRecentSearches();
         TransitionSet transitionSet = new TransitionSet()
@@ -135,10 +129,10 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
     private void saveRecentSearches() {
         String searchString = edtSearch.getText().toString();
         if (searchString.isEmpty()) return;
-        HashSet<String> set = (HashSet<String>) preferenceUtil.read(PreferenceUtil.SEARCH_HISTORY, HashSet.class);
+        HashSet<String> set = (HashSet<String>) preference.read(Preference.SEARCH_HISTORY, HashSet.class);
         if (set == null) set = new HashSet<>();
         set.add(searchString);
-        preferenceUtil.save(PreferenceUtil.SEARCH_HISTORY, set);
+        preference.save(Preference.SEARCH_HISTORY, set);
     }
 
     private void animateToSearchView() {
@@ -164,7 +158,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
         edtSearch.setText("");
         searchResultAdapter.setSearchResults(new ArrayList<Page>());
 
-        HashSet<String> set = (HashSet<String>) preferenceUtil.read(PreferenceUtil.SEARCH_HISTORY, HashSet.class);
+        HashSet<String> set = (HashSet<String>) preference.read(Preference.SEARCH_HISTORY, HashSet.class);
         if (set == null) {
             hideSearchHistoryView();
             return;
@@ -178,15 +172,15 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityContr
         // Setup the toolBar
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        if (getSupportActionBar() != null) getSupportActionBar().setTitle("");
 
         // init search layout views
         searchLayout = (FrameLayout) getLayoutInflater().inflate(R.layout.search_layout, null);
         alphaView = searchLayout.findViewById(R.id.alphaView);
         searchCard = searchLayout.findViewById(R.id.searchCard);
         edtSearch = searchLayout.findViewById(R.id.edt_search);
-        searchHistoryRv = searchLayout.findViewById(R.id.recycler_search_history);
-        searchResultRv = searchLayout.findViewById(R.id.recycler_search_result);
+        RecyclerView searchHistoryRv = searchLayout.findViewById(R.id.recycler_search_history);
+        RecyclerView searchResultRv = searchLayout.findViewById(R.id.recycler_search_result);
         progressBar = searchLayout.findViewById(R.id.search_progress_bar);
         searchHistoryView = searchLayout.findViewById(R.id.recycler_search_history_layout);
         edtSearch.addTextChangedListener(searchTextWatcher);

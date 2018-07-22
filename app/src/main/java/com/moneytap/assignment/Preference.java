@@ -1,4 +1,4 @@
-package com.moneytap.assignment.util;
+package com.moneytap.assignment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,14 +6,16 @@ import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 
-public class PreferenceUtil {
+import javax.inject.Inject;
 
-    public static final String LAST_LOCATION = "lastLocation";
+public class Preference {
+
     public static final String SEARCH_HISTORY = "SEARCH_HISTORY";
     private Gson gson;
     private SharedPreferences preferences;
 
-    public PreferenceUtil(Context context, Gson gson) {
+    @Inject
+    public Preference(Context context, Gson gson) {
         this.gson = gson;
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
@@ -27,26 +29,17 @@ public class PreferenceUtil {
         getEditor().putString(key, value).apply();
     }
 
-    // Remove & Clear methods
-    public void remove(String key) {
-        getEditor().remove(key).apply();
-    }
-
-    public void clear() {
-        getEditor().clear().apply();
-    }
-
     // Read methods
     public Object read(String key, Class classType) {
-        return gson.fromJson(readString(key, null), classType);
+        return gson.fromJson(readString(key), classType);
     }
 
-    private String readString(String key, String defaultValue) {
+    private String readString(String key) {
         try {
-            return preferences.getString(key, defaultValue);
+            return preferences.getString(key, null);
         } catch (Exception e) {
             e.printStackTrace();
-            return defaultValue;
+            return null;
         }
     }
 

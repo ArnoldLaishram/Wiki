@@ -7,9 +7,6 @@ import java.util.List;
 
 public class Query {
 
-    @SerializedName("redirects")
-    @Expose
-    private List<Redirect> redirects = null;
     @SerializedName("pages")
     @Expose
     private List<Page> pages = null;
@@ -22,20 +19,10 @@ public class Query {
 
     /**
      * @param pages
-     * @param redirects
      */
-    public Query(List<Redirect> redirects, List<Page> pages) {
+    public Query(List<Page> pages) {
         super();
-        this.redirects = redirects;
         this.pages = pages;
-    }
-
-    public List<Redirect> getRedirects() {
-        return redirects;
-    }
-
-    public void setRedirects(List<Redirect> redirects) {
-        this.redirects = redirects;
     }
 
     public List<Page> getPages() {

@@ -8,12 +8,13 @@ import android.util.Base64;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.moneytap.assignment.R;
 import com.moneytap.assignment.model.Page;
 import com.moneytap.assignment.model.Parse;
-import com.moneytap.assignment.util.PreferenceUtil;
+import com.moneytap.assignment.Preference;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -37,11 +38,13 @@ public class PageDetailActivity extends AppCompatActivity implements PageDetailC
     ImageView imgPage;
     @BindView(R.id.btn_back)
     View btnBack;
+    @BindView(R.id.search_progress_bar)
+    ProgressBar progressBar;
 
     @Inject
     PageDetailContract.Presenter weatherPresenter;
     @Inject
-    PreferenceUtil preferenceUtil;
+    Preference preference;
 
     public static Intent newIntent(Context context, Page page) {
         Intent newIntent = new Intent(context, PageDetailActivity.class);
@@ -104,15 +107,11 @@ public class PageDetailActivity extends AppCompatActivity implements PageDetailC
     }
 
     private void startLoader() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     private void stopLoader() {
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
+        progressBar.setVisibility(View.GONE);
     }
 
 }
