@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.moneytap.assignment.Preference;
 import com.moneytap.assignment.R;
 import com.moneytap.assignment.model.Page;
 import com.moneytap.assignment.model.Parse;
-import com.moneytap.assignment.Preference;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
